@@ -16,17 +16,10 @@ def procees_frame(data):
         'Postman-Token': "493db090-1235-4ee3-8b41-03014818e5c4"
         }
     response = requests.request("GET", url, data=payload, headers=headers)
-    return literal_eval(response.text).get('result')
+    return response.text
 
 
-img_path = r'/Users/uditgera-air/Desktop/object_detection_test.jpg'
 
-image = Image.open(img_path).convert('RGB')
+output_image_base64 = procees_frame(config.data)
 
-image_base64 = config.image_to_base64(image)
-
-output_image_base64 = procees_frame(image_base64)
-
-output_image = config.base64_to_image(output_image_base64)
-
-output_image.show()
+print(output_image_base64)

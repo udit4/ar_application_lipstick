@@ -6,6 +6,7 @@ from PIL import Image
 from io import BytesIO
 import base64
 import config
+import json
 
 
 app = Flask(__name__)
@@ -20,7 +21,8 @@ def process_image():
     color_code = (34, 34, 178)
     alpha = 0.5
     output_image_base64 = config.tag_lips(request.get_data(), color_code, alpha)
-    return jsonify({'result':output_image_base64})
+    # return base64 bytes of image
+    return output_image_base64
 
 
 
