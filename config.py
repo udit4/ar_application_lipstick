@@ -11,8 +11,8 @@ from imutils import face_utils
 
 
 # detector and predictor 
-detector = get_frontal_face_detector()
-predictor = shape_predictor('shape_predictor_68_face_landmarks.dat')
+# detector = get_frontal_face_detector()
+# predictor = shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 # converting image to base64 string (encoding)
 def image_to_base64(image):
@@ -57,7 +57,7 @@ def color_lips(frame, shape, color_code, alpha):
 
 
 # tagging lips on the frame
-def tag_lips(frame_base64, color_code, alpha):
+def tag_lips(detector, predictor, frame_base64, color_code, alpha):
     frame = base64_to_image(frame_base64)
     frame = pil_to_opencv(frame)
     #frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)

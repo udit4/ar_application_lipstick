@@ -1,0 +1,38 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Application Demo</title>
+  <style>
+  </style>
+</head>
+<body>
+        <center><video id="video" autoplay></video></center>
+  <script type="text/javascript">
+        navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+
+        if (navigator.getUserMedia) {
+        navigator.getUserMedia({ audio: false, video: { width: 640, height: 480 } },
+            function(stream) {
+                var video = document.querySelector('video');
+                video.srcObject = stream;
+                video.onloadedmetadata = function(e) {
+                video.play();
+                };
+            },
+            function(err) {
+                alert("The following error occurred: " + err.name);
+            }
+        );
+        } else {
+        alert("getUserMedia not supported");
+        }
+  </script>
+</body>
+</html>
